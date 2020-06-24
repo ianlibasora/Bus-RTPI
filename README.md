@@ -6,8 +6,8 @@ Dublin bus RTPI script in Python. Required the Python requests module for http r
 - When run, user provides bus stop number as an argument. If a "stops.txt" file exists, it will check the file as a dictionary against the provided arguement. Through this, keywords can be used as keys for stop numbers.
 - If there is no "stops.txt" file, the user can only provide stop numbers to check bus times
 
-### Future
-- Include Luas, Irish Rail data
+## Attribution
+- API and bus data from [SmartDublin Dublinked](https://data.smartdublin.ie/dataset/real-time-passenger-information-rtpi-for-dublin-bus-bus-eireann-luas-and-irish-rail) under Creative Commons Attribution [(CC-BY)](http://opendefinition.org/licenses/cc-by/)
 
 -----------------------
 
