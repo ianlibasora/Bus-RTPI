@@ -12,7 +12,7 @@ def mkdct():
          full = fd.readlines()
          for line in full:
             k, v = line.strip().split(",")
-            dct[k], dct[v] = v, v
+            dct[k] = v
    except FileNotFoundError:
       print(" --- Error. No stops.txt file found --- ")
       # Insert here backup dictionaries if no file found
