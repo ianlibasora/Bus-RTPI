@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
+# https://data.smartdublin.ie/cgi-bin/rtpi/realtimebusinformation?stopid=2727&format=json
+
 from sys import argv
 import requests
+import re
 
 def mkdct():
    try:
@@ -26,7 +29,12 @@ def main():
    else:
       stop = arg[0]
 
-   print(stop)
+   web = requests.get(f"https://data.smartdublin.ie/cgi-bin/rtpi/realtimebusinformation?stopid={stop}&format=json")
+   if web.status_code == 200:
+      data = web.json()
+      print(data)
+   else:
+      print(f"Web error occured: code {web.status_code}")
 
 if __name__ == "__main__":
    main()
