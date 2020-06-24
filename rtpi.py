@@ -6,16 +6,21 @@ from sys import argv
 import requests
 
 def mkdct():
+   dct = {}
    try:
       with open("stops.txt", "r") as fd:
          full = fd.readlines()
-         dct = {}
          for line in full:
             k, v = line.strip().split(",")
             dct[k], dct[v] = v, v
    except FileNotFoundError:
       print(" --- Error. No stops.txt file found --- ")
-      return {}
+      # Insert here backup dictionaries if no file found
+      dct = {
+         "home": "6030", "drimnagh": "2727", "nangor": "6243",
+         "kylemore": "1981", "dcu": "37", "tcd": "4522",
+         "castello": "2102", "aston": "326"
+      }
    return dct
 
 def main():
@@ -24,10 +29,10 @@ def main():
    if len(arg) == 0:
       # Default stop id when no code is provided
       stop = "6030"
-   elif arg[0] in dct:
-      stop = dct[arg[0]]
+   elif arg[0].lower() in dct:
+      stop = dct[arg[0].lower()]
    else:
-      stop = arg[0]
+      stop = arg[0].lower()
 
    web = requests.get(f"https://data.smartdublin.ie/cgi-bin/rtpi/realtimebusinformation?stopid={stop}&format=json")
    if web.status_code == 200:
