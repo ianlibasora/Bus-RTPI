@@ -38,16 +38,19 @@ def main():
    if web.status_code == 200:
       data = web.json()
       results = data["results"]
-      for x in results:
-         print(" ------------------------------ ")
-         print(f"{x['route']}, {x['destination']}, {'Dublin Bus' if x['operator'] == 'bac' else 'Go Ahead'}")
-         print(f"Due: {x['duetime']} mins\n" if x['duetime'] != "Due" else f"Due: Now\n")
-         print(f"Arrival time: {x['arrivaldatetime'][-8:]}")
-         print(f"Scheduled arrival: {x['scheduledarrivaldatetime'][-8:]}")
-         print("Additional information: N/A" if x['additionalinformation'] == "" else f"Additional information: {x['additionalinformation']}")
-         print(" ------------------------------ \n")
+      if len(results) != 0:
+         for x in results:
+            print(" ------------------------------ ")
+            print(f"{x['route']}, {x['destination']}, {'Dublin Bus' if x['operator'] == 'bac' else 'Go Ahead'}")
+            print(f"Due: {x['duetime']} mins\n" if x['duetime'] != "Due" else f"Due: Now\n")
+            print(f"Arrival time: {x['arrivaldatetime'][-8:]}")
+            print(f"Scheduled arrival: {x['scheduledarrivaldatetime'][-8:]}")
+            print("Additional information: N/A" if x['additionalinformation'] == "" else f"Additional information: {x['additionalinformation']}")
+            print(" ------------------------------ \n")
+      else:
+         print(f"API error: code {data['errorcode']}, {data['errormessage']}")
    else:
-      print(f"Web error occured: code {web.status_code}")
+      print(f"Web error: code {web.status_code}")
 
 if __name__ == "__main__":
    main()
