@@ -11,6 +11,6 @@ Dublin bus RTPI script in Python. Required the Python requests module for http r
 
 -----------------------
 
-Last updated: 24.06.2020, Python 3.8.2
+Last updated: 24.Jun.2020, Python 3.8.2
 
 By Joseph Libasora
