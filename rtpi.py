@@ -15,7 +15,7 @@ def mkdct():
             dct[k] = v
    except FileNotFoundError:
       print(" --- Error. No stops.txt file found --- ")
-      # Insert here backup dictionaries if no file found
+      # Insert here backup dictionary if no file found
       dct = {
          "home": "6030", "drimnagh": "2727", "nangor": "6243",
          "kylemore": "1981", "dcu": "37", "tcd": "4522",
