@@ -7,7 +7,12 @@ Dublin bus RTPI script in Python. Requires the Python requests module for http r
 - If there is no "stops.txt" file, the user can only provide stop numbers to check bus times
 
 ## Attribution
-- API and bus data from [SmartDublin Dublinked](https://data.smartdublin.ie/dataset/real-time-passenger-information-rtpi-for-dublin-bus-bus-eireann-luas-and-irish-rail) under Creative Commons Attribution [(CC-BY)](http://opendefinition.org/licenses/cc-by/)
+- Bus API and data from [SmartDublin Dublinked](https://data.smartdublin.ie/dataset/real-time-passenger-information-rtpi-for-dublin-bus-bus-eireann-luas-and-irish-rail) under Creative Commons Attribution [(CC-BY)](http://opendefinition.org/licenses/cc-by/)
+- http://luasforecasts.rpa.ie/analysis/view.aspx
+- http://data.tii.ie/Datasets/Luas/StopLocations/luas-stops.txt
+- https://data.tii.ie/
+- https://data.gov.ie/dataset/luas-forecasting-api/resource/078346e0-fe7f-4e71-9c51-21c78520dc3d
+- https://data.gov.ie/dataset/luas-forecasting-api
 
 -----------------------
 
