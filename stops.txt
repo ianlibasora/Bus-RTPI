@@ -1,8 +1,0 @@
-home,6030
-drimnagh,2727
-nangor,6243
-kylemore,1981
-dcu,37
-tcd,4522
-castello,2102
-aston,326
