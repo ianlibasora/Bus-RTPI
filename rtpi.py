@@ -15,7 +15,7 @@ from re import findall
 def bsdct():
    # User bus favourites dictionary, insert here stop favourites
    dct = {
-      "home": "6030", "drimnagh": "2cat7", "nangor": "6243", "mcd": "1981", 
+      "home": "6030", "drimnagh": "2727", "nangor": "6243", "mcd": "1981", 
       "dcu": "37", "tcd": "4522", "castello": "2102", "aston": "326"
    }
    return dct
