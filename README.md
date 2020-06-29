@@ -1,21 +1,28 @@
-# Dublin Bus RTPI Script
+# Dublin Public Trabsport RTPI Script
 
-Dublin bus RTPI script in Python. Requires the Python requests module for http requests. Runs in the terminal environment, compatible with both Windows and Linux. Can use "stops.txt" file to store the users' stops. Can still be run without the "stops.txt" file.
+Dublin Bus, Go Ahead Bus and Luas RTPI script in Python. Requires the Python requests module for http requests. Runs in the terminal environment, compatible with both Windows and Linux. 
 
 ## How it works
-- When run, user provides bus stop number as an argument. If a "stops.txt" file exists, it will check the file as a dictionary against the provided arguement. Through this, keywords can be used as keys for stop numbers.
-- If there is no "stops.txt" file, the user can only provide stop numbers to check bus times
+- When user calls the "rtpi.py" command, the user supplies the stop code or name as an argument. If a name is supplied, the name would be checked against the users' favourites dictionary within the script. If nothing is found, an error is returned. 
+- A similar process ocuuers when dualing with luas stops.
+- Note: stop codes are only available for bus stops.
 
 ## Attribution
-- Bus API and data from [SmartDublin Dublinked](https://data.smartdublin.ie/dataset/real-time-passenger-information-rtpi-for-dublin-bus-bus-eireann-luas-and-irish-rail) under Creative Commons Attribution [(CC-BY)](http://opendefinition.org/licenses/cc-by/)
-- http://luasforecasts.rpa.ie/analysis/view.aspx
-- http://data.tii.ie/Datasets/Luas/StopLocations/luas-stops.txt
-- https://data.tii.ie/
-- https://data.gov.ie/dataset/luas-forecasting-api/resource/078346e0-fe7f-4e71-9c51-21c78520dc3d
-- https://data.gov.ie/dataset/luas-forecasting-api
+- Bus [API][1] and data from [SmartDublin Dublinked][1], [data.gov.ie][2], [Natinal Transport Authority][3], Creative Commons Attribution 4.0 [(CC BY 4.0)][4]
+- Luas [stop data][6] from [Transport Infrastructure Ireland][5], Creative Commons Attribution 4.0 [(CC BY 4.0)][4]
+- Luas [API][7] from [Transport Infrastructure Ireland][5], [data.gov.ie][8], Creative Commons Attribution 4.0 [(CC BY 4.0)][4]
 
 -----------------------
 
-Last updated: 24.Jun.2020, Python 3.8.2
+Last updated: 29.Jun.2020, Python 3.8.2
 
 By Joseph Libasora
+
+[1]: <https://data.smartdublin.ie/dataset/real-time-passenger-information-rtpi-for-dublin-bus-bus-eireann-luas-and-irish-rail>
+[2]: <https://data.gov.ie/dataset/real-time-passenger-information-rtpi-for-dublin-bus-bus-eireann-luas-and-irish-rail>
+[3]: <https://data.gov.ie/organization/national-transport-authority>
+[4]: <https://creativecommons.org/licenses/by/4.0/>
+[5]: <https://data.tii.ie/#luas>
+[6]: <https://data.tii.ie/Datasets/Luas/StopLocations/index.html>
+[7]: <http://luasforecasts.rpa.ie/analysis/view.aspx>
+[8]: <https://data.gov.ie/dataset/luas-forecasting-api>

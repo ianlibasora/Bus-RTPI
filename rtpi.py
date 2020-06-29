@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 
-"""Dublin Bus rtpi script"""
+"""
+Dublin Public Transport Script
+
+Dublin Bus, Go Ahead Bus and Luas RTPI script in Python.
+Requires the Python requests module for http requests.
+Runs in the terminal environment, compatible with both Windows and Linux.
+"""
 
 from sys import argv
 import requests
@@ -9,17 +15,27 @@ from re import findall
 def bsdct():
    # User bus favourites dictionary, insert here stop favourites
    dct = {
-      "home": "6030", "drimnagh": "2cat7", "nangor": "6243",
-      "mcd": "1981", "dcu": "37", "tcd": "4522",
-      "castello": "2102", "aston": "326"
+      "home": "6030", "drimnagh": "2cat7", "nangor": "6243", "mcd": "1981", 
+      "dcu": "37", "tcd": "4522", "castello": "2102", "aston": "326"
    }
    return dct
 
 def hlp():
-   pass
+   print("   -----   Dublin RTPI Script   -----   \n")
+   print("Dublin public transport RTPI script in Python. Requires the Python requests module for http requests. Runs in the terminal environment, compatible with both Windows and Linux.")
+   print("\n# How it works")
+   print("- When user calls the 'rtpi.py' command, the user supplies the stop code or name as an argument. If a name is supplied, name is checked against users' favourites dictionary within the script. If nothing found, error is returned.")
+   print("- Similar process ocuuers when dualing with luas stops.\n- Note: stop codes are only available for bus stops.")
+   print("- Details, refer to README\n")
+   print("Example: rtpi.py home\n")
+   print("Luas stops:")
+   dct = ldct()
+   for k in dct.keys():
+      print(f"   {k}")
+   print("\n Last updated: 29.Jun.2020, Python 3.8.2")
+   print(" By Joseph Libasora")
 
 def ldct():
-   # Luas data from Trnansport Infrastructure Ireland, README for details
    dct = {
       'tallaght': '1', 'hospital': '2', 'cookstown': '3', 'belgard': '4', 'kingswood': '5',
       'red-cow': '6', 'kylemore': '7', 'bluebell': '8', 'blackhorse': '9', 'drimnagh': '10',
@@ -54,12 +70,33 @@ def bus(stop):
             print("Additional information: N/A" if x['additionalinformation'] == "" else f"Additional information: {x['additionalinformation']}")
             print(" ------------------------------ \n")
       else:
-         print(f"API error: code {data['errorcode']}, {data['errormessage']}")
+         print(f"Bus API error: code {data['errorcode']}, {data['errormessage']}")
    else:
       print(f"Web error: code {web.status_code}")
 
 def luas(stop):
-   pass
+   # Luas data from Trnansport Infrastructure Ireland, README for details
+   web = requests.get(f"http://luasforecasts.rpa.ie/analysis/view.aspx?id={stop}")
+   if web.status_code == 200:
+      data = web.text
+      out = findall(r"<td>.*", data)
+      results = [x.strip().strip("<td>").strip("</") for x in out]
+      if len(results) != 0:
+         i = 3
+         while i < len(results):
+            bound, dest, time, avls = results[i - 3], results[i - 2], results[i - 1].split(":"), results[i].split(":")
+            time, avls = int(time[1]), int(avls[1])
+
+            print(" ------------------------------ ")
+            print(f"{bound}: {dest}")
+            print(f"Scheduled arrival: {time} mins" if 0 < time else "Scheduled arrival: Now")
+            print(f"Estimated arrival: {avls} mins" if 0 < avls else "Estimated arrival: Now")
+            print(" ------------------------------ \n")
+            i += 13
+      else:
+         print("No Luas results found")
+   else:
+      print(f"Web error: code {web.status_code}")
 
 def main():
    arg = argv[1:]
