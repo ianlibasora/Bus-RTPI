@@ -113,7 +113,7 @@ class Transport(object):
       ]
       for k in self.luas_dct.keys():
          out.append(f"    {k}")
-      out.append("\n Last updated: 29.Jun.2020, Python 3.8.2")
+      out.append("\n Last updated: 12.Jul.2020, Python 3.8.2")
       out.append(" By Joseph Libasora")
       return "\n".join(out)
 

@@ -14,7 +14,7 @@ Dublin Bus, Go Ahead Bus and Luas RTPI library and script in Python. Requires th
 
 -----------------------------------
 
-Last updated: 29.Jun.2020, Python 3.8.2
+Last updated: 12.Jul.2020, Python 3.8.2
 
 By Joseph Libasora
 
